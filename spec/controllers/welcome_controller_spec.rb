@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe WelcomeController, type: :controller do
 
+  let(:user) { create(:user) }
+
   describe "GET #index" do
     it "renders the index template" do
       get :index
@@ -15,5 +17,4 @@ RSpec.describe WelcomeController, type: :controller do
       expect(response).to render_template(:about)
     end
   end
-
 end
