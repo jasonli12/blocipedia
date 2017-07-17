@@ -20,7 +20,6 @@
       <%= link_to "Upgrade to Premium", new_charge_path, class: 'btn btn-primary' %>
     <% else %>
       <%= link_to "Downgrade to Standard", downgrades_path, method: :post, class: 'btn btn-danger', data: {confirm: 'Prepared to be standardized? All of your private wikis will become public!'} %>
-      <!-- <%= link_to "Downgrade to Standard", downgrades_path, data: {method: :post, confirm: 'Are you sure you want to be standardized?'}, class: 'btn btn-danger' %> -->
     <% end %>
   </div>
 </div>

@@ -5,6 +5,8 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+    renderer = Redcarpet::Render::HTML.new(no_links: true, hard_wrap: true)
+    @markdown = Redcarpet::Markdown.new(renderer, extensions = {})
     authorize(@wiki)
   end
 
