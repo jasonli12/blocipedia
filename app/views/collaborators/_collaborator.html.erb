@@ -1,0 +1,26 @@
+<div class="row add-collaborator">
+  <% if current_user.role == 'admin' || current_user == wiki.user %>
+    <%= form_for [wiki, collaborator] do |f| %>
+      <!-- <%= f.label :add_collaborator %> -->
+      <div class="col-md-8">
+        <%= f.text_field :user_id, class: 'form-control', placeholder: "Enter collaborator email" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.submit "Add", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<h4>Collaborators</h4>
+<ol>
+  <% Collaborator.where(wiki: wiki).each do |collaborator| %>
+    <li>
+      <%= User.find(collaborator.user_id).email %>
+      <% if current_user.role == 'admin' || current_user == wiki.user %>
+        <%= link_to [collaborator.wiki, collaborator], method: :delete do %>
+          <i class="glyphicon glyphicon-remove"> </i>&nbsp;
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ol>

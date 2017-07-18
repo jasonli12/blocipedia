@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
   before_create :set_default_role
   has_many :wikis
+  has_many :wikis, through: :collaborators
 
   private
   def set_default_role
